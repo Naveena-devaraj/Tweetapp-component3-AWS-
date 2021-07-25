@@ -1,0 +1,16 @@
+version: '3'
+services:
+  tweetapp:
+    image: tweetapp
+    build: tweetapp/.
+    ports:
+      - 8091:8080
+  
+  tweetapp-ui:
+    image: angular-app
+    build: tweetapp-ui/.
+    ports:
+      - 3000:80
+    links:
+     - tweetapp
+    

@@ -1,0 +1,51 @@
+<div class="container mt-4 justify-content-center d-flex">
+    <div class="card">
+        <h4 class="ml-3 mt-3">Login</h4>
+        <div class="container-fluid mt-3">
+            <div class="text-danger" *ngIf="error != ''">{{error}}</div>
+            <form [formGroup]="loginForm">
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-lg-12">
+                        <label for="loginID">Username</label>
+                        <input type="text" class="form-control" id="loginID" formControlName="loginID"
+                            placeholder="Enter Username">
+                        <div *ngIf="(loginID.touched || loginID.dirty)">
+                            <small *ngIf="loginID.invalid && loginID.errors?.required" class="text-danger">Username
+                                is
+                                required.</small>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" formControlName="password"
+                            placeholder="Enter Password">
+                        <div *ngIf="(password.touched || password.dirty)">
+                            <small *ngIf="password.invalid  && password.errors?.required" class="text-danger">Password
+                                is required.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class=" form-group">
+                        <div class="col-sm-4 col-md-4 col-lg-4">
+                            <button type="submit" class="btn btn-primary " (click)=login()
+                                [disabled]="!loginForm.valid">Login</button>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-1">
+                    <div class="col-sm-8 col-md-8 col-lg-8">Forgot Password? <a
+                            routerLink="/updatePassword">UpdatePassword</a>
+                    </div>
+                    <div class="ml-auto col-sm-4 col-md-4 col-lg-4">New here? <a routerLink="/signup">Signup</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
